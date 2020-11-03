@@ -1,6 +1,7 @@
 import pyttsx3
 import SpeechRecognition
 import time
+from support.item_list import items
 engine = pyttsx3.init()
 engine.say("I am Computron version 0 point 0 point 2. Take me to your leader.")
 engine.runAndWait()
