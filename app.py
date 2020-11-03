@@ -1,9 +1,15 @@
 import pyttsx3
 import time
 engine = pyttsx3.init()
-engine.say("I am Computron version 0.0. Take me to your leader.")
+engine.say("I am Computron version 0.0.1. Take me to your leader.")
 engine.runAndWait()
 #here add the wii balance board "starting up"
 time.sleep(0.2)
 engine.say("All booted up! Waiting for command.")
 engine.runAndWait()
+while True:
+    response = input("Please enter the response you would like Computron to say...")
+    engine.say(response)
+    engine.runAndWait()
+    engine.say("Process complete; waiting for command.")
+#We could add speech recognition and an AI later but not right now.
