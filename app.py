@@ -1,5 +1,5 @@
 import pyttsx3
-import SpeechRecognition
+import speech_recognition
 import time
 from support.items_list import items
 engine = pyttsx3.init()
@@ -15,6 +15,7 @@ while True:
     engine.runAndWait()
     engine.say("Process complete; waiting for command.")
     engine.runAndWait()
+
 #We could add speech recognition and an AI later but not right now. 
 #When we pick the random item we should lower the chances of it being thetechrobo - add the following:
 #if rchoice.lower() == "thetechrobo":
