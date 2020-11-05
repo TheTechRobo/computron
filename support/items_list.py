@@ -3,5 +3,8 @@ items = [
 'undefined',
 'a hole to China',
 'The Tech Robo',
-'copyright'
+'copyright',
+'absolute rubbish',
+'stuff',
+'dumb'
 ]
