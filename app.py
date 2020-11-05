@@ -20,7 +20,7 @@ def askWithLogic(useSphinx):
     if useSphinx: 
         audio = sphinx()
         audioWithLogic = audio.lower().replace("what is","").replace("why is","").replace("who is","").replace("who are","").replace("why are","").replace("what are","").replace("what am","").replace("who am","").replace("is a","") #this looks complicated but it's just removing the most common starts of questions
-        result = audioWithLogin + " is %s" % random.choice(items)
+        result = audioWithLogic + " is %s" % random.choice(items)
         return result
     if not useSphinx:
         response = input("What would you like me to say? ")
