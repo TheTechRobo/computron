@@ -1,4 +1,4 @@
-emport pyttsx3
+import pyttsx3
 import speech_recognition as sr
 import time
 from support.items_list import items
