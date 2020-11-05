@@ -16,12 +16,12 @@ def sphinx():
         print("Sphinx error; {0}".format(e))
     return r.recognize_sphinx(audio)
 def askWithLogic(sphinx):
-    if sphinx: 
+    if useSphinx: 
         audio = sphinx()
         #add logic here
         result = audio #temporary
         return result
-    if not sphinx:
+    if not useSphinx:
         response = input("What would you like me to say? ")
         return response
 
@@ -33,7 +33,7 @@ time.sleep(0.2)
 engine.say("All booted up! Waiting for command.")
 engine.runAndWait()
 while True:
-    askWithLogic(sphinx=True)#set to False for classic asking for response at console
+    askWithLogic(useSphinx=True)#set to False for classic asking for response at console
     engine.say("Process complete; waiting for command.")
     engine.runAndWait()
 
