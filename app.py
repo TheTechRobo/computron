@@ -20,6 +20,9 @@ def askWithLogic(useSphinx):
     if useSphinx: 
         audio = sphinx()
         audioWithLogic = audio.lower().replace("what is","").replace("why is","").replace("who is","").replace("who are","").replace("why are","").replace("what are","").replace("what am","").replace("who am","").replace("is a","") #this looks complicated but it's just removing the most common starts of questions
+        rchoice = random.choice(items)
+        if rchoice.lower == "the tech robo":
+            rchoice = random.choice(items) #lower likelihood of it being thetechrobo
         result = audioWithLogic + " is %s" % random.choice(items)
         return result
     if not useSphinx:
@@ -39,6 +42,5 @@ while True:
     engine.runAndWait()
 
 #We could add speech recognition and an AI later but not right now. 
-#When we pick the random item we should lower the chances of it being thetechrobo - add the following:
-#if rchoice.lower() == "the tech robo":
-    #pick the choice AGAIN
+#Also, it says "you is blah" and stuff instead of "you are" and it doesnt recognize am i but thats for later. Right now it works. :D
+
