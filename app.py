@@ -4,6 +4,12 @@ import time
 import random
 from support.items_list import items
 
+def _Replace(list, audio):
+    for item in list:
+        audio = audio.lower()
+        audio = audio.replace(item, "")
+    return audio
+
 def sphinx():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -27,7 +33,8 @@ def askWithLogic(which):
     """
     if which == 0: 
         audio = sphinx()
-        audioWithLogic = audio.lower().replace("what is","").replace("why is","").replace("who is","").replace("who are","").replace("why are","").replace("what are","").replace("what am","").replace("who am","").replace("is a","") #this looks complicated but it's just removing the most common starts of questions
+        replaceList = ["what is", "why is", "who is", "who are", "why are", "what are", "what am", "who am", "is a"] #this looks complicated but it's just removing the most common starts of questions
+        audioWithLogic = _Replace(replaceList, audio)
         rchoice = random.choice(items)
         if rchoice.lower == "the tech robo":
             rchoice = random.choice(items) #lower likelihood of it being thetechrobo
