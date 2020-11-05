@@ -19,7 +19,7 @@ def sphinx():
 def askWithLogic(useSphinx):
     if useSphinx: 
         audio = sphinx()
-        audioWithLogic = audio.lower.split("what is","").split("Why is","").split("Who is","") #this looks complicated but it's just removing the most common starts of questions
+        audioWithLogic = audio.lower().split("what is","").split("Why is","").split("Who is","") #this looks complicated but it's just removing the most common starts of questions
         result = audioWithLogin + " is %s" % random.choice(items)
         return result
     if not useSphinx:
