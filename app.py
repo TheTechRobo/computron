@@ -1,6 +1,7 @@
 import pyttsx3
 import speech_recognition as sr
 import time
+import random
 from support.items_list import items
 
 def sphinx():
@@ -18,15 +19,15 @@ def sphinx():
 def askWithLogic(useSphinx):
     if useSphinx: 
         audio = sphinx()
-        #add logic here
-        result = audio #temporary
+        audioWithLogic = audio.lower.split("what is","").split("Why is","").split("Who is","") #this looks complicated but it's just removing the most common starts of questions
+        result = audioWithLogin + " is %s" % random.choice(items)
         return result
     if not useSphinx:
         response = input("What would you like me to say? ")
         return response
 
 engine = pyttsx3.init()
-engine.say("I am Compu-tron version 0 point 0 point 2. Take me to your leader.")
+engine.say("I am Compu-tron version Git Speech Recognition. Take me to your leader.")
 engine.runAndWait()
 #here add the wii balance board "starting up"
 time.sleep(0.2)
@@ -39,5 +40,5 @@ while True:
 
 #We could add speech recognition and an AI later but not right now. 
 #When we pick the random item we should lower the chances of it being thetechrobo - add the following:
-#if rchoice.lower() == "thetechrobo":
+#if rchoice.lower() == "the tech robo":
     #pick the choice AGAIN
