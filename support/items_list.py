@@ -2,6 +2,6 @@ items = [
 'banana',
 'undefined',
 'a hole to China',
-'TheTechRobo',
+'The Tech Robo',
 'copyright'
 ]
