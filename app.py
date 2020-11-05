@@ -15,7 +15,7 @@ def sphinx():
     except sr.RequestError as e:
         print("Sphinx error; {0}".format(e))
     return r.recognize_sphinx(audio)
-def askWithLogic(sphinx):
+def askWithLogic(useSphinx):
     if useSphinx: 
         audio = sphinx()
         #add logic here
