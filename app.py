@@ -34,7 +34,7 @@ time.sleep(0.2)
 engine.say("All booted up! Waiting for command.")
 engine.runAndWait()
 while True:
-    askWithLogic(useSphinx=True)#set to False for classic asking for response at console
+    engine.say(askWithLogic(useSphinx=True))#set to False for classic asking for response at console
     engine.say("Process complete; waiting for command.")
     engine.runAndWait()
 
