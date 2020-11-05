@@ -7,7 +7,7 @@ def sphinx():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
-    audio = r.listen(source)
+        audio = r.listen(source)
     try:
         print("Sphinx thinks you said " + r.recognize_sphinx(audio))
     except sr.UnknownValueError:
