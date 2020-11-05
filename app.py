@@ -1,4 +1,4 @@
-import pyttsx3
+emport pyttsx3
 import speech_recognition as sr
 import time
 from support.items_list import items
@@ -14,7 +14,7 @@ def sphinx():
         print("Sphinx could not understand audio")
     except sr.RequestError as e:
         print("Sphinx error; {0}".format(e))
-    retun r.recognize_sphinx(audio)
+    return r.recognize_sphinx(audio)
 def askWithLogic(sphinx):
     if sphinx: 
         audio = sphinx()
