@@ -16,8 +16,16 @@ def sphinx():
     except sr.RequestError as e:
         print("Sphinx error; {0}".format(e))
     return r.recognize_sphinx(audio)
-def askWithLogic(useSphinx):
-    if useSphinx: 
+def google(key):
+    pass
+def ibm(key):
+    pass
+
+def askWithLogic(which):
+    """
+    parameter which: 0 if Sphinx; 1 if Google; 2 if IBM; 99 if Manual. (99 so it's scalable and back wards compatible even if I add more)
+    """
+    if which == 0: 
         audio = sphinx()
         audioWithLogic = audio.lower().replace("what is","").replace("why is","").replace("who is","").replace("who are","").replace("why are","").replace("what are","").replace("what am","").replace("who am","").replace("is a","") #this looks complicated but it's just removing the most common starts of questions
         rchoice = random.choice(items)
@@ -25,7 +33,7 @@ def askWithLogic(useSphinx):
             rchoice = random.choice(items) #lower likelihood of it being thetechrobo
         result = audioWithLogic + " is %s" % random.choice(items)
         return result
-    if not useSphinx:
+    if which == 99:
         response = input("What would you like me to say? ")
         return response
 
@@ -37,7 +45,7 @@ time.sleep(0.2)
 engine.say("All booted up! Waiting for command.")
 engine.runAndWait()
 while True:
-    engine.say(askWithLogic(useSphinx=True))#set to False for classic asking for response at console
+    engine.say(askWithLogic(which=0))#set to 99 for classic asking for response at console
     engine.say("Process complete; waiting for command.")
     engine.runAndWait()
 
