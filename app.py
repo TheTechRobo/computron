@@ -41,6 +41,6 @@ while True:
     engine.say("Process complete; waiting for command.")
     engine.runAndWait()
 
-#We could add speech recognition and an AI later but not right now. 
+#We could add an AI later but not right now. 
 #Also, it says "you is blah" and stuff instead of "you are" and it doesnt recognize am i but thats for later. Right now it works. :D
 
