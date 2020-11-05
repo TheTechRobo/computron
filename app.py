@@ -30,7 +30,7 @@ def askWithLogic(useSphinx):
         return response
 
 engine = pyttsx3.init()
-engine.say("I am Compu-tron version Git Speech Recognition. Take me to your leader.")
+engine.say("I am Compu-tron version 0 point 1. Take me to your leader.")
 engine.runAndWait()
 #here add the wii balance board "starting up"
 time.sleep(0.2)
