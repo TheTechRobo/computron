@@ -63,7 +63,12 @@ def askWithLogic(which=False):
         function = google
     if which == 2:
         apiKeyMightExist = True
-        apiKeyYesNo = input("\nMake your choice: \n1 - I have an API key for Google Speech Recognition, and I want to type it in.\n2 - Either I don't have an API for Google Speech Recognition, or I don't want to type it in.")
+        apiKeyYesNo = input("\nMake your choice: \n1 - I have an API key for IBM Watson Speech Recognition, and I want to type it in.\n2 - Either I don't have an API for Google Speech Recognition, or I don't want to type it in.")
+        if apiKeyYesNo[0] == "1":
+            apiKey = input("Enter your API key: ")
+        else:
+            print("IBM Watson Speech Recognition requires a free API key. You can find it at www.ibm.com/cloud/watson-speech-to-text/pricing.")
+            return
         function = ibm
     if which == 99:
         response = input("What would you like me to say? ")
