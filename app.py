@@ -44,6 +44,10 @@ def askWithLogic(which):
     """
     if which == 0: 
         function = sphinx
+    if which == 1:
+        function = google
+    if which == 2:
+        function = ibm
     if which == 99:
         response = input("What would you like me to say? ")
         return response
