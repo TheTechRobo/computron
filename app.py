@@ -17,22 +17,35 @@ def sphinx():
         audio = r.listen(source)
     try:
         print("Sphinx thinks you said " + r.recognize_sphinx(audio))
+        return r.recognize_sphinx(audio)
     except sr.UnknownValueError:
         print("Sphinx could not understand audio")
     except sr.RequestError as e:
         print("Sphinx error; {0}".format(e))
-    return r.recognize_sphinx(audio)
+    return False
 def google(key):
-    pass
+    try:
+    # for testing purposes, we're just using the default API key
+    # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
+    # instead of `r.recognize_google(audio)`
+        print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
+        return r.recognize_sphinx(audio)
+    except sr.UnknownValueError:
+        print("Google Speech Recognition could not understand audio")
+    except sr.RequestError as e:
+        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+    return False
 def ibm(key):
     pass
 
 def askWithLogic(which):
     """
-    parameter which: 0 if Sphinx; 1 if Google; 2 if IBM; 99 if Manual. (99 so it's scalable and back wards compatible even if I add more)
+    parameter which: 0 if Sphinx; 1 if Google; 2 if IBM; 99 if Manual. (99 so it's scalable and backwards compatible even if I add more)
     """
     if which == 0: 
         audio = sphinx()
+        if not audio:
+            return "There was an issue with your text to speech. Check your Internet connection, and try again."
         replaceList = ["what is", "why is", "who is", "who are", "why are", "what are", "what am", "who am", "is a"] #this looks complicated but it's just removing the most common starts of questions
         audioWithLogic = _Replace(replaceList, audio)
         rchoice = random.choice(items)
