@@ -25,9 +25,6 @@ def sphinx():
     return False
 def google(key=False):
     try:
-        # for testing purposes, we're just using the default API key
-        # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
-        # instead of `r.recognize_google(audio)`
         if key:
             output = r.recognize_google(audio, key)
             print("Google Speech Recognition thinks you said " + output)
@@ -41,7 +38,15 @@ def google(key=False):
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
     return False
 def ibm(key):
-    pass
+    try:
+        output = r.recognize_ibm(audio, username=key["user"], password=key["pass"])
+        print("Watson thinks you said " + output)
+        return output
+    except sr.UnknownValueError:
+        print("Watson could not understand audio")
+    except sr.RequestError as e:
+        print("Could not request results from IBM Watson service; {0}".format(e))
+    return False
 
 def askWithLogic(which=False):
     """
@@ -65,7 +70,9 @@ def askWithLogic(which=False):
         apiKeyMightExist = True
         apiKeyYesNo = input("\nMake your choice: \n1 - I have an API key for IBM Watson Speech Recognition, and I want to type it in.\n2 - Either I don't have an API for Google Speech Recognition, or I don't want to type it in.")
         if apiKeyYesNo[0] == "1":
-            apiKey = input("Enter your API key: ")
+            apiKeyUser = input("Enter your IBM username: ")
+            apiKeyPass = input("Enter your IBM password: ")
+            apiKey = {"user": apiKeyUser, "pass": apiKeyPass}
         else:
             print("IBM Watson Speech Recognition requires a free API key. You can find it at www.ibm.com/cloud/watson-speech-to-text/pricing.")
             return
@@ -73,7 +80,7 @@ def askWithLogic(which=False):
     if which == 99:
         response = input("What would you like me to say? ")
         return response
-    if apiKeyMightExist:
+    elif apiKeyMightExist:
         if apiKeyYesNo[0] == "1":
             function(apiKey)
     else:
